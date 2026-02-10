@@ -1,5 +1,5 @@
 streamlit
-pandas
-numpy
-scikit-learn
-joblib
+pandas==X.X.X
+numpy==X.X.X
+scikit-learn==X.X.X
+joblib==X.X.X
