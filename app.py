@@ -3,6 +3,7 @@ import streamlit as st
 import pandas as pd
 import joblib
 import os
+import urllib.request
 
 st.set_page_config(page_title="Bank Term Deposit Predictor", layout="centered")
 
@@ -15,11 +16,11 @@ st.write(
 # -----------------------------
 # Load trained pipeline model
 # -----------------------------
+MODEL_URL = "https://github.com/Muhdsuleiman56/Bank-Deposit-Predict/releases/download/v1/bank_model.pkl"
 MODEL_PATH = "bank_model.pkl"
 
 if not os.path.exists(MODEL_PATH):
-    st.error(f"Model file not found: {MODEL_PATH}. Put bank_model.pkl in the same folder as app.py")
-    st.stop()
+     urllib.request.urlretrieve(MODEL_URL, MODEL_PATH)
 
 model = joblib.load(MODEL_PATH)
 
@@ -168,3 +169,4 @@ if st.button("Predict"):
             "Common cause: the app's input columns do not match the model's training features.\n"
             "Fix: ensure your notebook trained the model using the same engineered features and column names."
         )
+
